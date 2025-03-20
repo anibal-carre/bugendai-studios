@@ -1,10 +1,10 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import ProductGallery from "@/components/product-gallery"
-import RelatedProducts from "@/components/related-products"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import ProductGallery from "@/components/product-gallery";
+import RelatedProducts from "@/components/related-products";
 import {
   ChevronRight,
   Minus,
@@ -16,14 +16,14 @@ import {
   CreditCard,
   ShieldCheck,
   Star,
-} from "lucide-react"
+} from "lucide-react";
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   // This would normally come from a database or API
   const product = {
-    id: "mecha-warrior-dx",
-    name: "Mecha Warrior DX",
-    slug: "mecha-warrior-dx",
+    id: "Estatueta Marika de Elden Ring",
+    name: "Estatueta Marika de Elden Ring",
+    slug: "marika-elden-ring",
     price: 129.99,
     originalPrice: 149.99,
     status: "In Stock",
@@ -49,9 +49,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       "Individually numbered certificate of authenticity",
     ],
     images: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
+      "/products/product1.png",
+      "/products/product1.png",
+      "/products/product1.png",
       "/placeholder.svg?height=800&width=800",
       "/placeholder.svg?height=800&width=800",
     ],
@@ -59,7 +59,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     designer: "Hiroshi Tanaka",
     rating: 4.9,
     reviewCount: 28,
-  }
+  };
 
   return (
     <div className="flex min-h-screen flex-col dark bg-[#0a0a0a] text-white">
@@ -75,7 +75,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               Products
             </Link>
             <ChevronRight className="mx-2 h-4 w-4" />
-            <Link href={`/products/category/${product.categories[0].toLowerCase()}`} className="hover:text-primary">
+            <Link
+              href={`/products/category/${product.categories[0].toLowerCase()}`}
+              className="hover:text-primary"
+            >
               {product.categories[0]}
             </Link>
             <ChevronRight className="mx-2 h-4 w-4" />
@@ -94,18 +97,31 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <div className="space-y-6">
             <div>
               <div className="flex items-center gap-2">
-                {product.limitedEdition && <Badge className="bg-primary text-white">Limited Edition</Badge>}
-                <Badge variant="outline" className="border-gray-700 text-gray-300">
+                {product.limitedEdition && (
+                  <Badge className="bg-primary text-white">
+                    Limited Edition
+                  </Badge>
+                )}
+                <Badge
+                  variant="outline"
+                  className="border-gray-700 text-gray-300"
+                >
                   {product.status}
                 </Badge>
               </div>
-              <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">{product.name}</h1>
+              <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+                {product.name}
+              </h1>
               <div className="mt-2 flex items-center gap-2">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-4 w-4 ${i < Math.floor(product.rating) ? "fill-amber-400 text-amber-400" : "text-gray-600"}`}
+                      className={`h-4 w-4 ${
+                        i < Math.floor(product.rating)
+                          ? "fill-amber-400 text-amber-400"
+                          : "text-gray-600"
+                      }`}
                     />
                   ))}
                 </div>
@@ -117,12 +133,18 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
             <div className="space-y-2">
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold">${product.price.toFixed(2)}</span>
+                <span className="text-3xl font-bold">
+                  ${product.price.toFixed(2)}
+                </span>
                 {product.originalPrice && (
-                  <span className="text-lg text-gray-400 line-through">${product.originalPrice.toFixed(2)}</span>
+                  <span className="text-lg text-gray-400 line-through">
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
                 )}
               </div>
-              <p className="text-sm text-gray-400">Tax included. Shipping calculated at checkout.</p>
+              <p className="text-sm text-gray-400">
+                Tax included. Shipping calculated at checkout.
+              </p>
             </div>
 
             <Separator className="bg-gray-800" />
@@ -151,7 +173,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
               {product.limitedEdition && (
                 <div className="rounded-md bg-primary/10 p-3 text-sm">
-                  <p className="font-medium text-primary">Limited Edition: Only {product.edition} pieces worldwide</p>
+                  <p className="font-medium text-primary">
+                    Limited Edition: Only {product.edition} pieces worldwide
+                  </p>
                 </div>
               )}
             </div>
@@ -187,11 +211,18 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   <ShoppingCart className="mr-2 h-4 w-4" />
                   Add to Cart
                 </Button>
-                <Button variant="outline" className="flex-1 border-gray-800 bg-[#111111] hover:bg-[#1a1a1a]">
+                <Button
+                  variant="outline"
+                  className="flex-1 border-gray-800 bg-[#111111] hover:bg-[#1a1a1a]"
+                >
                   <Heart className="mr-2 h-4 w-4" />
                   Add to Wishlist
                 </Button>
-                <Button variant="outline" size="icon" className="border-gray-800 bg-[#111111] hover:bg-[#1a1a1a]">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="border-gray-800 bg-[#111111] hover:bg-[#1a1a1a]"
+                >
                   <Share2 className="h-4 w-4" />
                 </Button>
               </div>
@@ -241,14 +272,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
                 <h4 className="text-lg font-medium">Designer</h4>
                 <p className="text-gray-300">
-                  Designed by {product.designer}, a renowned concept artist with over 10 years of experience in the
-                  anime industry.
+                  Designed by {product.designer}, a renowned concept artist with
+                  over 10 years of experience in the anime industry.
                 </p>
 
                 <div className="rounded-md bg-[#0a0a0a] p-4">
                   <p className="text-sm text-gray-400">
-                    Note: Due to the handcrafted nature of our products, each piece may have slight variations in paint
-                    application, making each collectible truly unique.
+                    Note: Due to the handcrafted nature of our products, each
+                    piece may have slight variations in paint application,
+                    making each collectible truly unique.
                   </p>
                 </div>
               </div>
@@ -258,7 +290,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               className="mt-6 space-y-4 rounded-md border border-gray-800 bg-[#111111] p-6"
             >
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Technical Specifications</h3>
+                <h3 className="text-xl font-semibold">
+                  Technical Specifications
+                </h3>
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="space-y-3">
@@ -291,11 +325,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     </div>
                     <div className="flex justify-between border-b border-gray-800 pb-2">
                       <span className="font-medium">Edition Size</span>
-                      <span className="text-gray-300">{product.edition} pieces</span>
+                      <span className="text-gray-300">
+                        {product.edition} pieces
+                      </span>
                     </div>
                     <div className="flex justify-between border-b border-gray-800 pb-2">
                       <span className="font-medium">Packaging</span>
-                      <span className="text-gray-300">Premium collector box</span>
+                      <span className="text-gray-300">
+                        Premium collector box
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -311,11 +349,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 </ul>
               </div>
             </TabsContent>
-            <TabsContent value="shipping" className="mt-6 space-y-4 rounded-md border border-gray-800 bg-[#111111] p-6">
+            <TabsContent
+              value="shipping"
+              className="mt-6 space-y-4 rounded-md border border-gray-800 bg-[#111111] p-6"
+            >
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold">Shipping Information</h3>
                 <p className="text-gray-300">
-                  We ship worldwide using trusted courier services to ensure your collectible arrives safely.
+                  We ship worldwide using trusted courier services to ensure
+                  your collectible arrives safely.
                 </p>
 
                 <div className="space-y-3">
@@ -335,27 +377,34 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     </div>
                     <div className="rounded-md bg-[#0a0a0a] p-4">
                       <p className="font-medium">Rest of World</p>
-                      <p className="text-sm text-gray-300">7-14 business days</p>
+                      <p className="text-sm text-gray-300">
+                        7-14 business days
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <h4 className="text-lg font-medium">Return Policy</h4>
                 <p className="text-gray-300">
-                  We want you to be completely satisfied with your purchase. If for any reason you're not happy with
-                  your collectible, you can return it within 30 days of receipt.
+                  We want you to be completely satisfied with your purchase. If
+                  for any reason you're not happy with your collectible, you can
+                  return it within 30 days of receipt.
                 </p>
                 <ul className="list-inside list-disc space-y-2 text-gray-300">
                   <li>Item must be in original condition and packaging</li>
-                  <li>Return shipping costs are the responsibility of the customer</li>
-                  <li>Limited edition items can only be returned if defective</li>
+                  <li>
+                    Return shipping costs are the responsibility of the customer
+                  </li>
+                  <li>
+                    Limited edition items can only be returned if defective
+                  </li>
                   <li>Custom orders are non-returnable</li>
                 </ul>
 
                 <div className="rounded-md bg-primary/10 p-4">
                   <p className="font-medium text-primary">
-                    For any questions about shipping or returns, please contact our customer service team at
-                    support@kuriprint.com
+                    For any questions about shipping or returns, please contact
+                    our customer service team at support@kuriprint.com
                   </p>
                 </div>
               </div>
@@ -370,6 +419,5 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

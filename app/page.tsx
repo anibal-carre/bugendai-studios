@@ -73,17 +73,12 @@ export default function Home() {
             >
               Produtos
             </Link>
-            <Link
-              href="#new-releases"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Novos lançamentos
-            </Link>
+
             <Link
               href="#pre-orders"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Pré-encomendas
+              Categorias
             </Link>
             <Link
               href="#process"
@@ -213,7 +208,15 @@ export default function Home() {
 
         {/* Categories Section */}
         <section className="py-16 bg-[#0a0a0a]">
-          <div className="container">
+          <div className="container overflow-x-auto">
+            <div className="mb-2 flex justify-end">
+              <Link
+                href={"/categories"}
+                className="font-semibold text-primary underline hover:text-primary/70"
+              >
+                Ver todas as categorias
+              </Link>
+            </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 {
@@ -232,29 +235,47 @@ export default function Home() {
                   title: "Naruto",
                   image: "/category/naruto-logo.png",
                 },
-              ].map((category, index) => (
-                <Link
-                  href="#"
-                  key={index}
-                  className="group relative overflow-hidden rounded-lg"
-                >
-                  <div className="aspect-square overflow-hidden">
-                    <Image
-                      src={category.image || "/placeholder.svg"}
-                      alt={category.title}
-                      width={400}
-                      height={400}
-                      className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                    <div className="absolute bottom-0 left-0 p-4">
-                      <h3 className="text-lg font-bold text-white">
-                        {category.title}
-                      </h3>
+                {
+                  title: "Naruto",
+                  image: "/category/naruto-logo.png",
+                },
+                {
+                  title: "Naruto",
+                  image: "/category/naruto-logo.png",
+                },
+                {
+                  title: "Naruto",
+                  image: "/category/naruto-logo.png",
+                },
+                {
+                  title: "Naruto",
+                  image: "/category/naruto-logo.png",
+                },
+              ]
+                .slice(0, 4)
+                .map((category, index) => (
+                  <Link
+                    href="#"
+                    key={index}
+                    className="group relative overflow-hidden rounded-lg"
+                  >
+                    <div className="aspect-square overflow-hidden">
+                      <Image
+                        src={category.image || "/placeholder.svg"}
+                        alt={category.title}
+                        width={400}
+                        height={400}
+                        className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                      <div className="absolute bottom-0 left-0 p-4">
+                        <h3 className="text-lg font-bold text-white">
+                          {category.title}
+                        </h3>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))}
             </div>
           </div>
         </section>
@@ -264,7 +285,7 @@ export default function Home() {
           <div className="container space-y-12">
             <div className="flex justify-between items-center">
               <h2 className="text-3xl font-bold tracking-tighter">
-                Featured Collectibles
+                Action Figures
               </h2>
               <Link
                 href="#"
@@ -277,28 +298,28 @@ export default function Home() {
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {
-                  title: "Mecha Warrior DX",
-                  price: "$129.99",
-                  status: "In Stock",
-                  image: "/placeholder.svg?height=500&width=500",
+                  title: "Funko Pop Master Chief de Halo",
+                  price: "R$129.99",
+                  status: "Disponível",
+                  image: "/products/product3.png",
                 },
                 {
-                  title: "Sakura Shrine Diorama",
-                  price: "$199.99",
-                  status: "Pre-Order",
-                  image: "/placeholder.svg?height=500&width=500",
+                  title: "Charmander skin Ace, One Piece",
+                  price: "R$199.99",
+                  status: "Pré-encomenda",
+                  image: "/products/product4.png",
                 },
                 {
-                  title: "Kitsune Mask Deluxe",
-                  price: "$89.99",
-                  status: "In Stock",
-                  image: "/placeholder.svg?height=500&width=500",
+                  title: "Naruto Chibi",
+                  price: "R$154.99",
+                  status: "Em estoque",
+                  image: "/products/product2.png",
                 },
                 {
-                  title: "Dragon Emperor Statue",
-                  price: "$249.99",
-                  status: "Limited Edition",
-                  image: "/placeholder.svg?height=500&width=500",
+                  title: "Estatueta Marika de Elden Ring",
+                  price: "R$320.00",
+                  status: "Edição Limitada",
+                  image: "/products/product1.png",
                 },
               ].map((product, index) => (
                 <div
@@ -334,7 +355,7 @@ export default function Home() {
                       {product.price}
                     </p>
                     <Button className="mt-3 w-full bg-primary hover:bg-primary/90">
-                      Add to Cart
+                      Encomende Agora
                     </Button>
                   </div>
                 </div>
@@ -349,7 +370,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-lg">
               <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10"></div>
               <Image
-                src="/placeholder.svg?height=600&width=1200"
+                src="/maradona.png"
                 alt="New releases banner"
                 width={1200}
                 height={600}
@@ -358,17 +379,18 @@ export default function Home() {
               <div className="absolute inset-0 z-20 flex items-center">
                 <div className="px-8 md:px-16 max-w-xl space-y-6">
                   <div className="inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white">
-                    NEW RELEASE
+                    NOVO LANÇAMENTO
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">
-                    Legendary Samurai Collection
+                    Coleção Lendária de Samurais
                   </h2>
                   <p className="text-gray-300">
-                    Our newest line of historically accurate samurai figures
-                    with interchangeable weapons and armor pieces.
+                    Nossa linha mais recente de figuras de samurais
+                    historicamente precisas, com armas e peças de armadura
+                    intercambiáveis.
                   </p>
                   <Button className="bg-primary hover:bg-primary/90">
-                    Pre-Order Now
+                    Pré-encomende agora.
                   </Button>
                 </div>
               </div>
@@ -377,7 +399,9 @@ export default function Home() {
         </section>
 
         {/* Pre-Orders Section */}
-        <section id="pre-orders" className="py-16 bg-[#0a0a0a]">
+        {/**
+         * 
+         * <section id="pre-orders" className="py-16 bg-[#0a0a0a]">
           <div className="container space-y-12">
             <div className="flex justify-between items-center">
               <h2 className="text-3xl font-bold tracking-tighter">
@@ -455,17 +479,18 @@ export default function Home() {
             </div>
           </div>
         </section>
+         */}
 
         {/* Process Section */}
         <section id="process" className="py-16 bg-[#0c0c0c]">
           <div className="container space-y-12">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                Our Creation Process
+                Nosso processo de criação.
               </h2>
               <p className="mx-auto max-w-[700px] text-gray-400">
-                From concept to completion, we bring your ideas to life with
-                precision and care.
+                Do conceito à conclusão, transformamos suas ideias em realidade
+                com precisão e cuidado.
               </p>
             </div>
 
@@ -473,39 +498,39 @@ export default function Home() {
               {[
                 {
                   step: "01",
-                  title: "Design Consultation",
+                  title: "Consultoria de Design",
                   description:
-                    "We work closely with you to understand your vision and requirements.",
+                    "Trabalhamos de perto com você para entender sua visão e requisitos.",
                 },
                 {
                   step: "02",
-                  title: "3D Modeling",
+                  title: "Modelagem 3D",
                   description:
-                    "Our artists create detailed digital models inspired by your ideas.",
+                    "Nossos artistas criam modelos digitais detalhados inspirados pelas suas ideias.",
                 },
                 {
                   step: "03",
-                  title: "Precision Printing",
+                  title: "Impressão de Precisão",
                   description:
-                    "Using high-quality materials and state-of-the-art printers for the best results.",
+                    "Usamos materiais de alta qualidade e impressoras de última geração para os melhores resultados.",
                 },
                 {
                   step: "04",
-                  title: "Hand Finishing",
+                  title: "Acabamento Manual",
                   description:
-                    "Each piece is carefully sanded and prepared for painting.",
+                    "Cada peça é cuidadosamente lixada e preparada para pintura.",
                 },
                 {
                   step: "05",
-                  title: "Artistic Painting",
+                  title: "Pintura Artística",
                   description:
-                    "Detailed hand-painting brings your creation to life with vibrant colors.",
+                    "Pintura manual detalhada dá vida à sua criação com cores vibrantes.",
                 },
                 {
                   step: "06",
-                  title: "Final Delivery",
+                  title: "Entrega Final",
                   description:
-                    "Carefully packaged and shipped to ensure your item arrives in perfect condition.",
+                    "Cuidadosamente embalado e enviado para garantir que seu item chegue em perfeito estado.",
                 },
               ].map((step, index) => (
                 <div
@@ -569,38 +594,38 @@ export default function Home() {
           <div className="container space-y-12">
             <div className="flex justify-between items-center">
               <h2 className="text-3xl font-bold tracking-tighter">
-                Latest News
+                Últimas notícias
               </h2>
               <Link
                 href="#"
                 className="text-primary flex items-center gap-1 hover:underline"
               >
-                View All <ChevronRight className="h-4 w-4" />
+                Ver todos <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
 
             <div className="grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "New Anime Series Collection Announced",
-                  date: "November 15, 2023",
+                  title: "Nova estatueta Marika de Elden Ring!!",
+                  date: "Março 18, 2025",
                   excerpt:
-                    "We're excited to announce our partnership with Studio Ghibli for an exclusive collection of limited edition figures.",
-                  image: "/placeholder.svg?height=400&width=600",
+                    "Peça tem cerca de 25cm, produto personalizado e pintado a mão. Jogo do ano em 2022 agora eternizado em sua estante, garanta a sua peça ou encomende conosco 🧡",
+                  image: "/products/product1.png",
                 },
                 {
-                  title: "Behind the Scenes: Creating Our Mecha Series",
-                  date: "November 8, 2023",
+                  title: "Naruto Chibi 🧡",
+                  date: "Janeiro 6, 2025",
                   excerpt:
-                    "Take a look at our design process and the technology behind our highly detailed mecha figurines.",
-                  image: "/placeholder.svg?height=400&width=600",
+                    "Entre em contato para encomendar o seu, enviamos para todo Brasil ou entrega em mãos em São Paulo - Capital.",
+                  image: "/products/product2.png",
                 },
                 {
-                  title: "Tokyo Collectibles Expo 2023 Recap",
-                  date: "October 30, 2023",
+                  title: "Funko Pop Master Chief de Halo!!",
+                  date: "Fevereiro 22, 2025",
                   excerpt:
-                    "Check out the highlights from our booth at this year's Tokyo Collectibles Expo where we unveiled our newest designs.",
-                  image: "/placeholder.svg?height=400&width=600",
+                    "Figure de alta qualidade e pintada a mão, venha fazer seu orçamento para presentear quem você ama, ou deixar a sua estante com a sua cara 🧡",
+                  image: "/products/product3.png",
                 },
               ].map((article, index) => (
                 <div
@@ -640,11 +665,11 @@ export default function Home() {
           <div className="container space-y-12">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                What Collectors Say
+                O que os colecionadores dizem
               </h2>
               <p className="mx-auto max-w-[700px] text-gray-400">
-                Hear what our clients have to say about our 3D printed
-                collectibles.
+                Ouça o que nossos clientes têm a dizer sobre nossos
+                colecionáveis impressos em 3D
               </p>
             </div>
 
@@ -652,21 +677,21 @@ export default function Home() {
               {[
                 {
                   name: "Takashi M.",
-                  role: "Collector",
+                  role: "Colecionador",
                   quote:
-                    "The attention to detail on my custom mecha figure is incredible. Every joint moves smoothly and the paint work is flawless.",
+                    "A atenção aos detalhes na minha figura personalizada de mecha é incrível. Cada articulação se move suavemente e o trabalho de pintura é impecável.",
                 },
                 {
                   name: "Emily K.",
                   role: "Cosplayer",
                   quote:
-                    "My costume props arrived exactly as designed and in time for the convention. The lightweight material is perfect for all-day wear.",
+                    "Meus acessórios de fantasia chegaram exatamente como foram projetados e a tempo para a convenção. O material leve é perfeito para usar o dia todo.",
                 },
                 {
                   name: "David L.",
-                  role: "Game Developer",
+                  role: "Desenvolvedor de jogos",
                   quote:
-                    "We ordered prototype figures of our game characters and were blown away by the quality. They look exactly like our concept art!",
+                    "Encomendamos figuras protótipo dos personagens do nosso jogo e ficamos impressionados com a qualidade. Elas parecem exatamente com a nossa arte conceitual!",
                 },
               ].map((testimonial, index) => (
                 <div
@@ -707,21 +732,21 @@ export default function Home() {
               <div className="grid gap-8 md:grid-cols-2 items-center">
                 <div className="space-y-4">
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                    Join Our Collector's Club
+                    Junte-se ao nosso Clube de Colecionadores
                   </h2>
                   <p className="text-gray-300">
-                    Subscribe to our newsletter for exclusive previews, early
-                    access to pre-orders, and special discounts.
+                    Inscreva-se na nossa newsletter para prévias exclusivas,
+                    acesso antecipado a pré-vendas e descontos especiais.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <input
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Digite seu email"
                     className="flex h-10 w-full rounded-md border border-gray-800 bg-[#111111] px-3 py-2 text-sm text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                   <Button className="bg-primary hover:bg-primary/90 whitespace-nowrap">
-                    Subscribe Now
+                    Inscreva-se agora
                   </Button>
                 </div>
               </div>
@@ -736,20 +761,23 @@ export default function Home() {
               <div className="grid gap-8 md:grid-cols-2">
                 <div className="space-y-4">
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                    Get In Touch
+                    Entre em contato
                   </h2>
                   <p className="text-gray-300">
-                    Contact us today to discuss your custom 3D printing project
-                    or inquire about our collectibles.
+                    Entre em contato conosco hoje para discutir seu projeto
+                    personalizado de impressão 3D ou para saber mais sobre
+                    nossos colecionáveis.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <MessageCircle className="h-5 w-5 text-primary" />
-                      <span className="text-gray-300">info@kuriprint.com</span>
+                      <span className="text-gray-300">
+                        bugendaistudios@gmail.com
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Send className="h-5 w-5 text-primary" />
-                      <span className="text-gray-300">Tokyo, Japan</span>
+                      <span className="text-gray-300">São Paulo, Brasil</span>
                     </div>
                   </div>
                   <div className="flex gap-4 pt-4">
@@ -790,12 +818,12 @@ export default function Home() {
                         htmlFor="name"
                         className="text-sm font-medium text-white"
                       >
-                        Name
+                        Nome
                       </label>
                       <input
                         id="name"
                         className="w-full rounded-md border border-gray-800 bg-[#0a0a0a] px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="Your name"
+                        placeholder="Digite seu nome"
                       />
                     </div>
                     <div className="space-y-2">
@@ -809,7 +837,7 @@ export default function Home() {
                         id="email"
                         type="email"
                         className="w-full rounded-md border border-gray-800 bg-[#0a0a0a] px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-  px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="Your email"
+                        placeholder="Digite seu email"
                       />
                     </div>
                   </div>
@@ -818,17 +846,17 @@ export default function Home() {
                       htmlFor="message"
                       className="text-sm font-medium text-white"
                     >
-                      Message
+                      Mensagem
                     </label>
                     <textarea
                       id="message"
                       className="w-full rounded-md border border-gray-800 bg-[#0a0a0a] px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="Tell us about your project"
+                      placeholder="Conte-nos sobre o seu projeto"
                       rows={4}
                     ></textarea>
                   </div>
                   <Button className="w-full bg-primary hover:bg-primary/90">
-                    Send Message
+                    Enviar Mensagem
                   </Button>
                 </div>
               </div>
@@ -842,44 +870,46 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-4">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Printer3d className="h-6 w-6 text-primary" />
+                <Image
+                  className="rounded-full border-[1px] border-white"
+                  width={32}
+                  height={32}
+                  src={"/bugendai-studios-logo.png"}
+                  alt="Bugendai Studios Logo"
+                />
                 <span className="text-xl font-bold tracking-tight text-white">
-                  KuriPrint
+                  Bugendai Studios
                 </span>
               </div>
               <p className="text-sm text-gray-400">
-                Premium 3D printed anime collectibles and custom figurines with
-                Japanese-inspired craftsmanship.
+                Colecionáveis de anime premium impressos em 3D e figuras
+                personalizadas com artesanato inspirado no Japão.
               </p>
               <div className="flex gap-4">
-                <Button
-                  variant="ghost"
-                  size="icon"
+                <Link
+                  href={"instagram.com"}
                   className="h-8 w-8 text-gray-400 hover:text-primary"
                 >
                   <Instagram className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
+                </Link>
+                <Link
+                  href={"facebook.com"}
                   className="h-8 w-8 text-gray-400 hover:text-primary"
                 >
                   <Facebook className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
+                </Link>
+                <Link
+                  href={"x.com"}
                   className="h-8 w-8 text-gray-400 hover:text-primary"
                 >
                   <Twitter className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
+                </Link>
+                <Link
+                  href={"youtube.com"}
                   className="h-8 w-8 text-gray-400 hover:text-primary"
                 >
                   <Youtube className="h-4 w-4" />
-                </Button>
+                </Link>
               </div>
             </div>
 
@@ -888,42 +918,27 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="#"
+                    href="/products"
                     className="text-sm text-gray-400 hover:text-primary"
                   >
-                    New Releases
+                    Produtos
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href="/categories"
+                    className="text-sm text-gray-400 hover:text-primary"
+                  >
+                    Categorias
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="#news"
                     className="text-sm text-gray-400 hover:text-primary"
                   >
-                    Pre-Orders
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-gray-400 hover:text-primary"
-                  >
-                    Limited Editions
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-gray-400 hover:text-primary"
-                  >
-                    Accessories
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-gray-400 hover:text-primary"
-                  >
-                    Sale Items
+                    Notícias
                   </Link>
                 </li>
               </ul>
@@ -931,7 +946,7 @@ export default function Home() {
 
             <div>
               <h3 className="mb-4 text-lg font-semibold text-white">
-                Information
+                Informação
               </h3>
               <ul className="space-y-2">
                 <li>
@@ -939,39 +954,24 @@ export default function Home() {
                     href="#"
                     className="text-sm text-gray-400 hover:text-primary"
                   >
-                    About Us
+                    Sobre Nós
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="#/process"
                     className="text-sm text-gray-400 hover:text-primary"
                   >
-                    Production Process
+                    Processo de Produção
                   </Link>
                 </li>
+
                 <li>
                   <Link
-                    href="#"
+                    href="#contact"
                     className="text-sm text-gray-400 hover:text-primary"
                   >
-                    Custom Orders
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-gray-400 hover:text-primary"
-                  >
-                    News & Events
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-gray-400 hover:text-primary"
-                  >
-                    Contact Us
+                    Fale Conosco
                   </Link>
                 </li>
               </ul>
@@ -1028,8 +1028,8 @@ export default function Home() {
 
           <div className="mt-12 border-t border-gray-800 pt-8 text-center">
             <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} KuriPrint. All rights reserved.
-              Bringing anime to life through 3D printing.
+              © {new Date().getFullYear()} Bugendai Studios. Todos os direitos
+              reservados. Dando vida ao anime através da impressão 3D.
             </p>
           </div>
         </div>
